@@ -11,6 +11,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 import { SearchComponent } from '../search/search.component';
@@ -29,7 +30,7 @@ import { SupportRoutingModule } from './support-routing.module';
     SupportRoutingModule,
     ReactiveFormsModule,
     MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule, MatListModule,
-    MatInputModule
+    MatInputModule,MatTooltipModule
   ]
 })
 export class SupportModule { }

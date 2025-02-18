@@ -4,7 +4,7 @@
 
 .toggle-button {
     position: absolute;
-    top: 10px;
+    bottom: 1rem;
     right: 10px;
     background: none;
     border: none;
@@ -13,7 +13,7 @@
 
 .open-button {
     position: absolute;
-    top: 10px;
+    bottom: 1rem;
     left: 10px;
     background: none;
     border: none;
@@ -25,15 +25,24 @@ mat-icon {
 }
 
 mat-list {
-    padding-top: 50px;
+    padding-top: 25px;
 }
 
 .inner-child{
-    padding: 50px 20px 0 20px;
+    padding: 25px 20px 0 20px;
 }
 
 .mat-drawer.mat-drawer-side{
     width: 250px !important;
+}
+
+.comp-logo{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.logo-comp{
+    width: 12rem;
 }
 
 ::ng-deep .mat-drawer-inner-container{

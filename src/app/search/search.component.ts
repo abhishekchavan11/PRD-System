@@ -19,4 +19,8 @@ export class SearchComponent {
   onSubmit() {
     console.log("----",this.myForm.value);
   }
+
+  logout(){
+    console.log("----logout");
+  }
 }
