@@ -1,0 +1,41 @@
+.example-container {
+    height: 100vh;
+}
+
+.toggle-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.open-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+mat-icon {
+    font-size: 24px;
+}
+
+mat-list {
+    padding-top: 50px;
+}
+
+.inner-child{
+    padding: 50px 20px 0 20px;
+}
+
+.mat-drawer.mat-drawer-side{
+    width: 250px !important;
+}
+
+::ng-deep .mat-drawer-inner-container{
+    background-color: #f1f1f1;
+}

@@ -1,0 +1,24 @@
+<div class="logo">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+</div>
+<div class="mainBody">
+    <h2>Welcome to PRD Support Engine</h2>
+    <h3>Document Question Answering Application</h3>
+    <h4>Ask Questions Based on PRD Support Document</h4>
+    <div>
+        <form class="formClass" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline">
+                <mat-label for="myInput">Enter your query</mat-label>
+                <input matInput id="myInput" formControlName="query">
+            </mat-form-field>
+            <br>
+            <button type="submit" mat-raised-button >Get Answer</button>
+        </form>
+    </div>
+    <div class="generated-text">
+        <h5>Generated text :</h5>
+        <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus sagittis ligula, vel molestie diam vehicula congue. Phasellus convallis mollis justo quis euismod. Aliquam leo orci, imperdiet quis ipsum in, mattis lobortis magna. Vivamus sagittis aliquam enim quis molestie. Integer bibendum hendrerit magna. Cras gravida lectus vitae justo consequat, finibus euismod odio eleifend.
+        </span>
+    </div>
+</div>

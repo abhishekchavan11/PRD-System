@@ -1,0 +1,19 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer #drawer mode="side" opened>
+        <button (click)="toggleDrawer()" class="toggle-button">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <mat-list role="list">
+            <mat-list-item role="listitem" routerLink="questions">Question</mat-list-item>
+            <mat-list-item role="listitem" routerLink="file-upload">File upload</mat-list-item>
+        </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <button *ngIf="!drawer.opened" (click)="toggleDrawer()" class="open-button">
+            <mat-icon>arrow_forward</mat-icon>
+        </button>
+        <div class="inner-child">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>
