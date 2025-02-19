@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,17 +11,16 @@ export class LoginComponent {
   
   loginForm: FormGroup;
   hide = true;
-  roleList: string[] = ['Admin', 'User'];
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router : Router) {
     this.loginForm = this.fb.group({
-      username: [''],
-      password: [''],
-      role: ['']
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
   onSubmit() {
     console.log(this.loginForm.value);
+    this.router.navigate(['/home/questions']);
   }
 
 }

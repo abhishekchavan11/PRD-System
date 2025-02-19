@@ -1,3 +1,15 @@
 <div class="mainBody">
-    <p>fileupload works!</p>
+    <h2>File upload page</h2>
+    <mat-card>
+        <mat-card-content>
+          <!-- <input type="file" (change)="onFileSelected($event)" #fileInput accept=".csv, .xls, .xlsx" multiple> -->
+          <input type="file" (change)="onFileSelected($event)" #fileInput accept=".csv, .xls, .xlsx" multiple hidden>
+          <button mat-raised-button (click)="fileInput.click()" class="upload-button">Choose File</button>
+          <mat-list>
+            <mat-list-item *ngFor="let file of selectedFiles">{{ file.name }}</mat-list-item>
+          </mat-list>
+          <button (click)="onReset(fileInput)" mat-button>Reset</button> &nbsp;
+          <button (click)="onUpload()" mat-raised-button color="primary">Upload</button>
+        </mat-card-content>
+      </mat-card>
 </div>

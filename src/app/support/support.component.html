@@ -1,20 +1,29 @@
 <mat-drawer-container class="example-container">
     <mat-drawer #drawer mode="side" opened>
-        <div class="comp-logo">
-            <img src="../../assets/images/Hexaware-Content-Light.png" alt="logo" class="logo-comp">
-        </div>
         <button (click)="toggleDrawer()" class="toggle-button">
             <mat-icon>arrow_back</mat-icon>
         </button>
         <mat-list role="list">
-            <mat-list-item role="listitem" routerLink="questions">Question</mat-list-item>
-            <mat-list-item role="listitem" routerLink="file-upload">File upload</mat-list-item>
+            <mat-list-item role="listitem" routerLink="questions" routerLinkActive="active-link">Question</mat-list-item>
+            <mat-list-item role="listitem" routerLink="file-upload" routerLinkActive="active-link">File upload</mat-list-item>
         </mat-list>
     </mat-drawer>
     <mat-drawer-content>
         <button *ngIf="!drawer.opened" (click)="toggleDrawer()" class="open-button">
             <mat-icon>arrow_forward</mat-icon>
         </button>
+        <div class="header">
+            <mat-toolbar>
+                <div class="comp-logo">
+                    <img src="../../assets/images/Hexaware-Content-Light.png" alt="logo" class="logo-comp">
+                </div>
+                <span class="example-spacer"></span>
+                <button class="logout-btn">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="logout" matTooltip="Logout"
+                        (click)="logout()"></mat-icon>
+                </button>
+            </mat-toolbar>
+        </div>
         <div class="inner-child">
             <router-outlet></router-outlet>
         </div>

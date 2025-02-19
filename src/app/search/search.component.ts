@@ -20,7 +20,4 @@ export class SearchComponent {
     console.log("----",this.myForm.value);
   }
 
-  logout(){
-    console.log("----logout");
-  }
 }

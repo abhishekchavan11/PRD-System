@@ -1,5 +1,6 @@
 import { Component, ViewChild  } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-support',
@@ -7,6 +8,11 @@ import { MatDrawer } from '@angular/material/sidenav';
   styleUrls: ['./support.component.scss']
 })
 export class SupportComponent {
+
+  constructor(
+    private router : Router
+  ){}
+
   @ViewChild('drawer')
   drawer!: MatDrawer;
 
@@ -14,4 +20,8 @@ export class SupportComponent {
     this.drawer.toggle();
   }
 
+  logout(){
+    console.log("----logout");
+    this.router.navigate(['/auth/login']);
+  }
 }

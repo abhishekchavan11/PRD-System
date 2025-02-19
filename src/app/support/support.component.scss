@@ -25,7 +25,11 @@ mat-icon {
 }
 
 mat-list {
-    padding-top: 25px;
+    padding-top: 5rem;
+}
+
+.active-link {
+background: #e1e9f3;
 }
 
 .inner-child{
@@ -34,6 +38,7 @@ mat-list {
 
 .mat-drawer.mat-drawer-side{
     width: 250px !important;
+    border: none !important;
 }
 
 .comp-logo{
@@ -45,6 +50,19 @@ mat-list {
     width: 12rem;
 }
 
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.logout-btn{
+    border: none !important;
+    cursor: pointer;
+}
+
 ::ng-deep .mat-drawer-inner-container{
+    background-color: #f1f1f1;
+}
+
+::ng-deep .mat-toolbar-row, .mat-toolbar-single-row{
     background-color: #f1f1f1;
 }
