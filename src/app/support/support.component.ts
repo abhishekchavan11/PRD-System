@@ -1,6 +1,7 @@
 import { Component, ViewChild  } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { AuthService } from '../authenticate/auth.service';
 
 @Component({
   selector: 'app-support',
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class SupportComponent {
 
   constructor(
-    private router : Router
+    private router : Router,
+    public authService : AuthService
   ){}
 
   @ViewChild('drawer')
@@ -22,6 +24,7 @@ export class SupportComponent {
 
   logout(){
     console.log("----logout");
+    this.authService.logout()
     this.router.navigate(['/auth/login']);
   }
 }

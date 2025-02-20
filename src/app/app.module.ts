@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SupportModule } from './support/support.module';
 import { AuthenticateModule } from './authenticate/authenticate.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AuthenticateModule } from './authenticate/authenticate.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SupportModule,
-    AuthenticateModule
+    AuthenticateModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
