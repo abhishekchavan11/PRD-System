@@ -5,7 +5,7 @@
         </button>
         <mat-list role="list"  *ngIf="(authService.role$ | async) as role">
             <mat-list-item role="listitem" routerLink="questions" routerLinkActive="active-link">Question</mat-list-item>
-            <mat-list-item role="listitem" routerLink="file-upload" routerLinkActive="active-link"  *ngIf="role === 'Admin'">File upload</mat-list-item>
+            <mat-list-item role="listitem" routerLink="file-upload" routerLinkActive="active-link"  *ngIf="role === 'admin'">File upload</mat-list-item>
         </mat-list>
     </mat-drawer>
     <mat-drawer-content>

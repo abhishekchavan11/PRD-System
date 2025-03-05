@@ -22,9 +22,19 @@ export class SupportComponent {
     this.drawer.toggle();
   }
 
-  logout(){
-    console.log("----logout");
-    this.authService.logout()
-    this.router.navigate(['/auth/login']);
+  logout() {
+    try {
+      this.authService.logout().subscribe(
+        response => {
+          console.log('Logout successful', response);
+          this.router.navigate(['/auth/login']);
+        },
+        error => {
+          console.error('Logout failed', error);
+        }
+      );
+    } catch (error : any) {
+      console.error('Logout error:', error.message);
+    }
   }
 }

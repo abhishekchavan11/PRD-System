@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OperationsService } from '../operations/operations.service';
 
 @Component({
   selector: 'app-fileupload',
@@ -6,10 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./fileupload.component.scss']
 })
 export class FileuploadComponent {
+
+  constructor(private opService: OperationsService) {
+
+  }
   selectedFiles: File[] = [];
 
   onFileSelected(event: any) {
-    console.log("event",event);
+    console.log("event", event);
     this.selectedFiles = Array.from(event.target.files);
   }
 
@@ -19,7 +24,14 @@ export class FileuploadComponent {
   }
 
   onUpload() {
-    // Implement your upload logic here
     console.log('Files to upload:', this.selectedFiles);
+    this.opService.uploadFiles(this.selectedFiles).subscribe(
+      response => {
+        console.log('Upload response:', response);
+      },
+      error => {
+        console.error('Upload error:', error);
+      }
+    );
   }
 }

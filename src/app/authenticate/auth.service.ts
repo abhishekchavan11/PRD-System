@@ -9,29 +9,38 @@ import { delay } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = 'http://127.0.0.1:5000';
 
   private roleSubject = new BehaviorSubject<string | null>(null);
   role$ = this.roleSubject.asObservable();
+  private userNameSubject = new BehaviorSubject<string | null>(null);
+  userName$ = this.userNameSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  setRole(role: string) {
+  setRole(role: string, username: string) {
     this.roleSubject.next(role);
+    this.userNameSubject.next(username);
   }
 
   getRole() {
     return this.roleSubject.value;
   }
 
-  clearRole() {
-    this.roleSubject.next(null);
+  getUsername() {
+    return this.userNameSubject.value;
   }
 
-  login(credentials: { username: string; password: string }): Observable<any> {
-    return this.http.post('/api/login', credentials).pipe(
+  clearRole() {
+    this.roleSubject.next(null);
+    this.userNameSubject.next(null);
+  }
+
+  login(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((response: any) => {
-        if (response.success) {
-          this.setRole(response.role);
+        if (response.status == 200) {
+          this.setRole(response.role, response.username);
         }
       })
     );
@@ -49,7 +58,24 @@ export class AuthService {
   //   );
   // }
 
-  logout() {
-    this.clearRole();
+  // logout() {
+  //   this.clearRole();
+  // }
+
+  logout(): Observable<any> {
+    const username = this.userNameSubject.getValue();
+    if (!username) {
+      throw new Error('Username is null');
+    }
+
+    const formData: FormData = new FormData();
+    formData.append('username', username);
+
+    return this.http.post(`${this.apiUrl}/logout`, formData).pipe(
+      tap((response: any) => {
+        console.log('Logout response:', response);
+        this.clearRole();
+      })
+    );
   }
 }

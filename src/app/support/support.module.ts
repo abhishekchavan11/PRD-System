@@ -14,6 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { SearchComponent } from '../search/search.component';
 import { FileuploadComponent } from '../fileupload/fileupload.component';
@@ -31,7 +32,7 @@ import { SupportRoutingModule } from './support-routing.module';
     SupportRoutingModule,
     ReactiveFormsModule,
     MatSidenavModule, MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule, MatListModule,
-    MatInputModule,MatTooltipModule, MatToolbarModule,MatCardModule
+    MatInputModule,MatTooltipModule, MatToolbarModule,MatCardModule,MatProgressSpinnerModule
   ]
 })
 export class SupportModule { }

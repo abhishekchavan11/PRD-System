@@ -2,7 +2,6 @@
     <h2>File upload page</h2>
     <mat-card>
         <mat-card-content>
-          <!-- <input type="file" (change)="onFileSelected($event)" #fileInput accept=".csv, .xls, .xlsx" multiple> -->
           <input type="file" (change)="onFileSelected($event)" #fileInput accept=".csv, .xls, .xlsx" multiple hidden>
           <button mat-raised-button (click)="fileInput.click()" class="upload-button">Choose File</button>
           <mat-list>

@@ -14,7 +14,7 @@ export class LoginComponent {
   hide = true;
   constructor(private fb: FormBuilder, private router : Router, private authService : AuthService) {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -22,7 +22,7 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.loginForm.value).subscribe(
       (response: any) => {
-        if (response.success) {
+        if (response.response == "User logged in") {
           this.router.navigate(['/home/questions']);
         }
       },

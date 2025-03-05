@@ -1,7 +1,7 @@
 <div class="mainBody">
     <h2>Welcome to PRD Support Engine</h2>
     <h3>Document Question Answering Application</h3>
-    <h4>Ask Questions Based on PRD Support Document</h4>
+    <h3>Ask Questions Based on PRD Support Document</h3>
     <div>
         <form class="formClass" [formGroup]="myForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="outline">
@@ -9,13 +9,15 @@
                 <input matInput id="myInput" formControlName="query">
             </mat-form-field>
             <br>
-            <button type="submit" mat-raised-button >Get Answer</button>
+            <div class="loader-btn">
+              <button type="submit" mat-raised-button [disabled]="!myForm.valid || submitFlag">Get Answer</button>
+              <mat-spinner *ngIf="loaderFlag" style="height: 30px;width: 30px;"></mat-spinner>
+            </div>
         </form>
     </div>
     <div class="generated-text">
-        <h5>Generated text :</h5>
-        <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus sagittis ligula, vel molestie diam vehicula congue. Phasellus convallis mollis justo quis euismod. Aliquam leo orci, imperdiet quis ipsum in, mattis lobortis magna. Vivamus sagittis aliquam enim quis molestie. Integer bibendum hendrerit magna. Cras gravida lectus vitae justo consequat, finibus euismod odio eleifend.
-        </span>
+        <div *ngIf="formattedResponse" class="formatted-response">
+          <p *ngFor="let line of formattedResponse.split('\n')">{{ line }}</p>
+        </div>
     </div>
 </div>
