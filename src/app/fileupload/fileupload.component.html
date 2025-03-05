@@ -7,8 +7,11 @@
           <mat-list>
             <mat-list-item *ngFor="let file of selectedFiles">{{ file.name }}</mat-list-item>
           </mat-list>
-          <button (click)="onReset(fileInput)" mat-button>Reset</button> &nbsp;
-          <button (click)="onUpload()" mat-raised-button color="primary">Upload</button>
+          <div class="loader-btn">
+            <button (click)="onReset(fileInput)" mat-button>Reset</button>
+            <button (click)="onUpload(fileInput)" mat-raised-button color="primary" [disabled]="selectedFiles.length == 0">Upload</button> &nbsp;
+            <mat-spinner *ngIf="loaderFlag" style="height: 30px;width: 30px;"></mat-spinner>
+          </div>
         </mat-card-content>
       </mat-card>
 </div>
