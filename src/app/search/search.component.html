@@ -3,7 +3,7 @@
     <h3>Document Question Answering Application</h3>
     <h3>Ask Questions Based on PRD Support Document</h3>
     <div>
-        <form class="formClass" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <form class="formClass" [formGroup]="myForm"  #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
             <mat-form-field appearance="outline">
                 <mat-label for="myInput">Enter your query</mat-label>
                 <input matInput id="myInput" formControlName="query">

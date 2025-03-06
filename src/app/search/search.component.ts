@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { OperationsService } from '../operations/operations.service';
 
 @Component({
@@ -20,15 +20,18 @@ export class SearchComponent {
     });
   }
 
-  onSubmit() {
+  onSubmit(formDirective: FormGroupDirective) {
     this.submitFlag = true;
     this.loaderFlag = true;
+    this.formattedResponse = '';
     this.operation.getAnswers(this.myForm.value).subscribe(
       (res)=>{
         console.log("res--",res);
         this.formattedResponse = this.formatResponse(res.response);
         this.submitFlag = false;
         this.loaderFlag = false;
+        formDirective.resetForm();  // Clears the <mat-error> messages
+        this.myForm.reset();
       },
       (error) => {
         console.error('Get answer failed', error);
