@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { OperationsService } from '../operations/operations.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { marked } from 'marked';
 
 @Component({
   selector: 'app-search',
@@ -11,10 +13,10 @@ export class SearchComponent {
 
   myForm: FormGroup;
   response: string = '';
-  formattedResponse: string = '';
-  loaderFlag : boolean = false;
+  formattedResponse: SafeHtml = '';
+  loaderFlag: boolean = false;
   submitFlag !: boolean;
-  constructor(private fb: FormBuilder, private operation : OperationsService) {
+  constructor(private fb: FormBuilder, private operation: OperationsService, private sanitizer: DomSanitizer) {
     this.myForm = this.fb.group({
       query: ['', [Validators.required]]
     });
@@ -25,9 +27,9 @@ export class SearchComponent {
     this.loaderFlag = true;
     this.formattedResponse = '';
     this.operation.getAnswers(this.myForm.value).subscribe(
-      (res)=>{
-        console.log("res--",res);
-        this.formattedResponse = this.formatResponse(res.response);
+      async (res) => {
+        console.log("res--", res);
+        this.formattedResponse = await this.formatResponse(res.response);
         this.submitFlag = false;
         this.loaderFlag = false;
         formDirective.resetForm();  // Clears the <mat-error> messages
@@ -41,12 +43,35 @@ export class SearchComponent {
     )
   }
 
-  formatResponse(response: string): string {
-    // Remove special characters and replace \n with new lines
-    return response
-      .replace(/[*#]/g, '')
-      .replace(/\\n/g, '\n')
-      .replace(/\n\n/g, '\n'); // Ensure single new lines
+  async formatResponse(response: string): Promise<SafeHtml> {
+    // Preprocess the response to remove markdown syntax like `**`
+    response = this.removeMarkdownSyntax(response);
+    if (response.startsWith('```html') && response.endsWith('```')) {
+      response = response.slice(7, -3); // Remove the first 7 characters (`html`) and last 3 characters (```)
+    }
+    let htmlContent: string;
+
+    // Check if the response is already in HTML format
+    if (this.isHtml(response)) {
+      htmlContent = response; // Use the HTML directly
+    } else {
+      // Parse markdown to HTML
+      htmlContent = await marked.parse(response);
+    }
+
+    // Sanitize the HTML content
+    return this.sanitizer.bypassSecurityTrustHtml(htmlContent);
+  }
+
+  removeMarkdownSyntax(content: string): string {
+    // Remove markdown syntax like `**` for bold text
+    return content.replace(/\*\*(.*?)\*\*/g, '$1'); // Replace `**bold text**` with `bold text`
+  }
+
+  isHtml(content: string): boolean {
+    // Check if the content contains HTML tags
+    const htmlTagRegex = /<\/?[a-z][\s\S]*>/i;
+    return htmlTagRegex.test(content);
   }
 
 }

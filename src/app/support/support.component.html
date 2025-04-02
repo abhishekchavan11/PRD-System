@@ -12,16 +12,26 @@
         <button *ngIf="!drawer.opened" (click)="toggleDrawer()" class="open-button">
             <mat-icon>arrow_forward</mat-icon>
         </button>
-        <div class="header">
+        <div class="header header-bar">
             <mat-toolbar>
-                <div class="comp-logo">
+                <div class="">
                     <img src="../../assets/images/Hexaware-Content-Light.png" alt="logo" class="logo-comp">
                 </div>
                 <span class="example-spacer"></span>
-                <button class="logout-btn">
+                <!-- <button class="logout-btn">
                     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="logout" matTooltip="Logout"
                         (click)="logout()"></mat-icon>
-                </button>
+                </button> -->
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>person</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="logout()">
+                      <mat-icon>logout</mat-icon>
+                      <span>Logout</span>
+                    </button>
+                  </mat-menu>
+                  
             </mat-toolbar>
         </div>
         <div class="inner-child">

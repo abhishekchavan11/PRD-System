@@ -10,16 +10,18 @@
     cursor: pointer;
 }
 
-.generated-text{
+.generated-text {
     margin-top: 20px;
 }
 
 .formatted-response {
-    white-space: pre-wrap; /* Preserve whitespace and wrap text */
-    word-wrap: break-word; /* Break long words */
+    white-space: normal;
+    /* Preserve whitespace and wrap text */
+    word-wrap: break-word;
+    /* Break long words */
 }
 
-.loader-btn{
+.loader-btn {
     display: flex;
     align-items: center;
     gap: 25px;
@@ -29,7 +31,7 @@
 //     height: 40px !important;
 // }
 
-::ng-deep .mat-mdc-form-field{
+::ng-deep .mat-mdc-form-field {
     max-width: 40rem;
     min-width: 10rem;
     width: -webkit-fill-available;
@@ -39,7 +41,7 @@
 //     top: 68% !important;
 // }
 
-::ng-deep .mat-mdc-list-item:not(.mat-mdc-list-item-interactive){
+::ng-deep .mat-mdc-list-item:not(.mat-mdc-list-item-interactive) {
     padding: 10px 20px;
 }
 

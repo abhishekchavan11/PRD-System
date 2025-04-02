@@ -12,7 +12,7 @@
 }
 
 .open-button {
-    position: absolute;
+    position: fixed;
     bottom: 1rem;
     left: 10px;
     background: none;
@@ -47,7 +47,7 @@ background: #e1e9f3;
 }
 
 .logo-comp{
-    width: 12rem;
+    width: 8rem;
 }
 
 .example-spacer {
@@ -57,6 +57,11 @@ background: #e1e9f3;
 .logout-btn{
     border: none !important;
     cursor: pointer;
+    background-color: transparent;
+}
+
+.header-bar{
+    box-shadow: 1.5px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 ::ng-deep .mat-drawer-inner-container{
@@ -64,5 +69,5 @@ background: #e1e9f3;
 }
 
 ::ng-deep .mat-toolbar-row, .mat-toolbar-single-row{
-    background-color: #f1f1f1;
+    background-color: transparent;
 }
