@@ -64,8 +64,8 @@ export class SearchComponent {
   }
 
   removeMarkdownSyntax(content: string): string {
-    // Remove markdown syntax like `**` for bold text
-    return content.replace(/\*\*(.*?)\*\*/g, '$1'); // Replace `**bold text**` with `bold text`
+    // Replace markdown syntax `**bold text**` with HTML `<b>bold text</b>`
+    return content.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>'); // Convert `**bold text**` to `<b>bold text</b>`
   }
 
   isHtml(content: string): boolean {
